@@ -1,6 +1,7 @@
 # Cloud
-This repo is meant for use in Software Lab Project.
 
-# Authors
-- # PRANAV RAO
-- # ARNAV KADU
+This repository is part of the Software Lab Project, designed to support and manage cloud-based applications and services.
+
+## Authors
+- **Pranav Rao**
+- **Arnav Kadu**
