@@ -1,0 +1,70 @@
+Static objects - sent at one go
+
+Dynamic allocation at the cloud within bounds
+- what about big files? Compression of data
+- streaming data? Compression on the go
+
+Dividing the cloud based on users - which involves authentication
+
+Is there requirement for the storage items or things which may be coming in the specific format....each team could send a different format of embedding or serialisation......For such cases will be required for every such file to idk like reconverted into some different format to maintain some like consistency while storage 
+
+**Should we scale up the cloud as and when the sizeof the userbase grows?
+
+* There can be some optimal storage methods for certain files formats, so we can look into those
+
+** Plus we need to look into data loss while transferring as well
+
+** Each team will send different data through the json file, but the format of the push-pull requests have to be the consistent for all
+
+** Cloud transfer will be done async
+
+** What to do when cloud is down?
+
+Security for cloud details
+
+Cloud stress testing
+Multiple systems which will be pushing to the cloud
+
+Distributed and gui demo
+
+Content of the Cloud:
+1. Image from whiteboard
+2. Chat messages from Content
+
+Integrate with dashboard to get user authentication
+
+We divide the cloud based on each user
+Each user has a dedicated folder
+The folder has to be authenticated
+
+The folder is subdivided by two folders:
+1. Whiteboard Images
+2. Content chats
+
+login into cloud details required:
+1. user details
+
+after login - 
+put request details required:
+2. data
+3. source of the data
+
+get request details:
+1. data_uri
+2. source of the data
+
+put request details:
+1. old data_uri
+2. new data
+3. source of the data
+
+delete request details:
+1. data_uri
+2. source of the data
+
+how the meta data would be stored:
+1. data_uri
+2. data
+3. timestamp
+4. user
+5. folder
