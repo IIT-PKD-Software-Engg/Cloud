@@ -19,22 +19,22 @@ public class Cloud: ICloud {
     IStorage storage;
     IDatabase database;
 
-    Dictionary<string, object> get(Dictionary<string, string> user_details, string folder, string data_uri)
+    Dictionary<string, object> Get(Dictionary<string, string> userDetails, string folder, string dataUri)
     {
 
     }
 
-    string put(Dictionary<string, string> user_details, string folder, object data)
+    string Put(Dictionary<string, string> userDetails, string folder, object data)
     {
 
     }
 
-    bool post(Dictionary<string, string> user_details, string folder, string old_data_uri, object data)
+    bool Put(Dictionary<string, string> userDetails, string folder, string oldDataUri, object data)
     {
 
     }
 
-    bool delete(Dictionary<string, string> user_details, string folder, string data_uri)
+    bool Delete(Dictionary<string, string> userDetails, string folder, string dataUri)
     {
 
     }

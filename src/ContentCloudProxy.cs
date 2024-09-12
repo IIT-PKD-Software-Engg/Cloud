@@ -18,30 +18,30 @@ using System.Collections.Generic;
 public class ContentCloudProxy {
     Cloud cloudService;
     string folder = 'content';
-    Dictionary<string, string> user_auth;
+    Dictionary<string, string> userAuth;
 
-    public ContentCloudProxy(Dictionary<string, string> user_details) {
-        cloudService = new Cloud(user_details);
-        user_auth = user_details;
+    public ContentCloudProxy(Dictionary<string, string> userDetails) {
+        cloudService = new Cloud(userDetails);
+        userAuth = userDetails;
     }
 
-    Dictionary<string, object> get(string data_uri)
+    Dictionary<string, object> Get(string dataUri)
     {
-        return cloudService.get(user_auth, folder, data_uri);
+        return cloudService.Get(userAuth, folder, dataUri);
     }
 
-    string put(string folder, object data)
+    string Put(string folder, object data)
     {
-        return cloudService.put(user_auth, folder, data)
+        return cloudService.Put(userAuth, folder, data)
     }
 
-    bool post(string folder, string old_data_uri, object data)
+    bool Put(string folder, string oldDataUri, object data)
     {
-        return cloudService.post(user_auth, folder, old_data_uri, data)
+        return cloudService.Put(userAuth, folder, oldDataUri, data)
     }
 
-    bool delete(string folder, string data_uri)
+    bool Delete(string folder, string dataUri)
     {
-        return cloudService.delete(user_auth, folder, data_uri)
+        return cloudService.Delete(userAuth, folder, dataUri)
     }
 }

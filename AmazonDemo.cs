@@ -7,8 +7,8 @@ using Amazon.S3.Model;
 
 
 // Creating a connection
-string accessKey = "put your access key here!";
-string secretKey = "put your secret key here!";
+string accessKey = "Put your access key here!";
+string secretKey = "Put your secret key here!";
 
 AmazonS3Config config = new AmazonS3Config();
 config.ServiceURL = "objects.dreamhost.com";

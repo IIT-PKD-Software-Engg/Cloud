@@ -20,7 +20,7 @@ Class Details:
 * IStorage and IDatabase will be given by the cloud provider
 
 How are we storing the data:
-1. string data_uri
+1. string dataUri
 2. object data
 3. int timestamp
 

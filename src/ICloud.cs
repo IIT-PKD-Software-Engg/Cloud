@@ -16,8 +16,8 @@ using System.Drawing;
 using System.Collections.Generic;
 
 public interface ICloud {
-	Dictionary<string, object> get(user_details, string folder, string data_uri);
-	int put(user_details, string folder, object data);
-	bool post(user_details, string folder, string old_data_uri, object data);
-	bool delete(user_details, string folder, string data_uri);
+	Dictionary<string, object> Get(userDetails, string folder, string dataUri);
+	int Put(userDetails, string folder, object data);
+	bool Put(userDetails, string folder, string oldDataUri, object data);
+	bool Delete(userDetails, string folder, string dataUri);
 }

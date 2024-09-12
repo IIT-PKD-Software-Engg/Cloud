@@ -18,30 +18,30 @@ using System.Collections.Generic;
 public class WhiteBoardCloudProxy {
 	Cloud cloudService;
 	string folder = 'whiteboard';
-	Dictionary<string, string> user_auth;
+	Dictionary<string, string> userAuth;
 
-	WhiteBoardCloudProxy(Dictionary<string, string> user_details) {
-		cloudService = new Cloud(user_details);
-		user_auth = user_details;
+	WhiteBoardCloudProxy(Dictionary<string, string> userDetails) {
+		cloudService = new Cloud(userDetails);
+		userAuth = userDetails;
 	}
 
-	Dictionary<string,object> get(string data_uri)
+	Dictionary<string,object> Get(string dataUri)
 	{
-		return cloudService.get(user_auth, folder, data_uri);
+		return cloudService.Get(userAuth, folder, dataUri);
 	}
 
-	data_uri put(string folder, object data)
+	dataUri Put(string folder, object data)
 	{
-		return cloudService.data_uri put(user_auth, folder, data)
+		return cloudService.dataUri Put(userAuth, folder, data)
 	}
 
-	bool post(string folder, string old_data_uri, object data)
+	bool Put(string folder, string oldDataUri, object data)
 	{
-		return cloudService.post(user_auth, folder, old_data_uri, data)
+		return cloudService.Put(userAuth, folder, oldDataUri, data)
 	}
 
-	bool delete(string folder, string data_uri)
+	bool Delete(string folder, string dataUri)
 	{
-		return cloudService.delete(user_auth, folder, data_uri)
+		return cloudService.Delete(userAuth, folder, dataUri)
 	}
 }
