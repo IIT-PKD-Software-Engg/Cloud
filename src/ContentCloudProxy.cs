@@ -30,7 +30,7 @@ public class ContentCloudProxy {
         return cloudService.Get(userAuth, folder, dataUri);
     }
 
-    string Put(string folder, object data)
+    string Post(string folder, object data)
     {
         return cloudService.Put(userAuth, folder, data)
     }

@@ -24,7 +24,7 @@ public class Cloud: ICloud {
 
     }
 
-    string Put(Dictionary<string, string> userDetails, string folder, object data)
+    string Post(Dictionary<string, string> userDetails, string folder, object data)
     {
 
     }
