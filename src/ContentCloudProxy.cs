@@ -32,7 +32,7 @@ public class ContentCloudProxy {
 
     string Post(string folder, object data)
     {
-        return cloudService.Put(userAuth, folder, data)
+        return cloudService.Post(userAuth, folder, data)
     }
 
     bool Put(string folder, string oldDataUri, object data)
