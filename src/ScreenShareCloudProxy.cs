@@ -1,5 +1,5 @@
 /******************************************************************************
-* Filename    = WhiteBoardProxy.cs
+* Filename    = ScreenshareProxy.cs
 *
 * Author      = Pranav Guruprasad Rao
 *
@@ -7,7 +7,7 @@
 * 
 * Project     = Cloud
 *
-* Description = WhiteBoard Cloud Use Class
+* Description = Screenshare Cloud Use Class
 *****************************************************************************/
 
 using System;
@@ -15,12 +15,12 @@ using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 
-public class WhiteBoardCloudProxy {
+public class ScreenshareCloudProxy {
 	Cloud cloudService;
-	string folder = "whiteboard";
+	string folder = "screenshare";
 	Dictionary<string, string> userAuth;
 
-	WhiteBoardCloudProxy(Dictionary<string, string> userDetails) {
+	ScreenshareCloudProxy(Dictionary<string, string> userDetails) {
 		cloudService = new Cloud(userDetails);
 		userAuth = userDetails;
 	}

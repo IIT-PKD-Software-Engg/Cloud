@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 public class ContentCloudProxy {
     Cloud cloudService;
-    string folder = 'content';
+    string folder = "content";
     Dictionary<string, string> userAuth;
 
     public ContentCloudProxy(Dictionary<string, string> userDetails) {
