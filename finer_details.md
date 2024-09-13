@@ -32,3 +32,5 @@ How are we storing the data:
 # Add User Configuration files if possible
 
 # add encryption to chats
+
+# look into storage of large files
