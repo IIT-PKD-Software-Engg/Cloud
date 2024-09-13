@@ -34,3 +34,5 @@ How are we storing the data:
 # add encryption to chats
 
 # look into storage of large files
+
+# prepare cloud ux
