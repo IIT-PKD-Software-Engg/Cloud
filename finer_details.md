@@ -26,3 +26,13 @@ How are we storing the data:
 
 ## Class Diagram
 ![cloud](Class Diagram)
+
+
+# Add App Configuration files for rest of the module which will be called first
+# Add User Configuration files if possible
+
+# add encryption to chats
+
+# look into storage of large files
+
+# prepare cloud ux
