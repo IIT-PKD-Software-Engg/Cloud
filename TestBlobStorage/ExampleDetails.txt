@@ -1,0 +1,10 @@
+this is just a sample code performing the following:
+
+1) Sign-In and connect to Azure using the DefaultAzureCredential
+2) Create Container
+3) Upload blob(Hello World! containing text file) to a container
+4) Lists all blobs in that container
+5) Download the blob
+6) Clean the entire thing i.e.
+	a) Delete the blob container
+	b) Delete the local source and downloaded files

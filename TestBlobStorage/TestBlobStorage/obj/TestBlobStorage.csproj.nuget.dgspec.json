@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\TestBlobStorage\\TestBlobStorage\\TestBlobStorage.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\TestBlobStorage\\TestBlobStorage\\TestBlobStorage.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\TestBlobStorage\\TestBlobStorage\\TestBlobStorage.csproj",
+        "projectName": "TestBlobStorage",
+        "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\TestBlobStorage\\TestBlobStorage\\TestBlobStorage.csproj",
+        "packagesPath": "C:\\Users\\ARNAV\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\TestBlobStorage\\TestBlobStorage\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ARNAV\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.12.1, )"
+            },
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.22.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
