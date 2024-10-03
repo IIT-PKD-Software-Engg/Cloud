@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "iTj29Ka9GSLdCdjF/d1JGvdHPvG4/WBGhv/rkgUFjwM=",
+  "Source": "SampleBlobApi",
+  "BasePath": "_content/SampleBlobApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
