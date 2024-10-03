@@ -33,30 +33,47 @@ public class BlobService
         var _blobContainerClient = _blobServiceClient.GetBlobContainerClient(containerName);
     }
 
+    /// <summary>
+    /// Create Container for the Account
+    /// </summary>
+    /// <param name="containerName">Container Name</param>
     public async Task CreateContainerAsync(string containerName)
     {
         string _containerName = containerName + Guid.NewGuid().ToString();
         _blobContainerClient = await _blobServiceClient.CreateBlobContainerAsync(containerName);
     }
 
+	/// <summary>
+    /// List all Containers present in the Account
+    /// </summary>
     public async Task<IEnumerable<string>> ListContainersAsync()
     {
         var containers = _blobServiceClient.GetBlobContainersAsync();
         return containers.Select(c => c.Name).ToListAsync();
     }
 
+	/// <summary>
+    /// List all Blobs present in the Container
+    /// </summary>
     public async Task<IEnumerable<string>> ListBlobsAsync()
     {
         var blobs = _blobContainerClient.GetBlobs();
         return blobs.Select(b => b.Name).ToListAsync();
     }
 
+	/// <summary>
+    /// Delete Blob in the container
+    /// </summary>
+    /// <param name="blobName">Blob Name</param>
     public async Task DeleteBlobAsync(string blobName)
     {
         await _blobContainerClient.DeleteBlobIfExistsAsync(blobName);
     }
 
-    public async Task ClearContainerAsync(string containerName)
+	/// <summary>
+    /// Clear the current Container
+    /// </summary>
+    public async Task ClearContainerAsync()
     {
         await foreach(var blobItem in ListBlobsAsync())
         {
@@ -65,21 +82,33 @@ public class BlobService
         }
     }
 
+	/// <summary>
+    /// Delete the current Container
+    /// </summary>
     public async Task DeleteContainerAsync()
     {
         await _blobContainerClient.DeleteIfExistsAsync();
     }
 
+	/// <summary>
+    /// Upload a File as a Blob inside the container
+    /// </summary>
+    /// <param name="fileStream">File Contents</param>
+    /// <param name="blobName">File Name</param>
     public async Task<string> UploadBlobAsync(stream fileStream, string blobName)
     {
-        BlobClient blobUploadClient = containerClient.GetBlobClient(blobName);
+        BlobClient blobUploadClient = _blobContainerClient.GetBlobClient(blobName);
         await blobUploadClient.UploadAsync(fileStream, true);
         return blobUploadClient.Uri.ToString();
     }
 
+	/// <summary>
+    /// Download a blob as a File inside the container
+    /// </summary>
+    /// <param name="blobName">File Name</param>
     public async Task<Stream> DownloadBlobAsync(string blobName)
     {
-        BlobClient blobDownloadClient = containerClient.GetBlobClient(blobName);
+        BlobClient blobDownloadClient = _blobContainerClient.GetBlobClient(blobName);
         var fileDownload = await blobDownloadClient.DownloadToAsync();
         return fileDownload.Value.Content;
     }
