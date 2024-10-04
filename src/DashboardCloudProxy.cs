@@ -1,5 +1,5 @@
 /******************************************************************************
-* Filename    = ContentCloudProxy.cs
+* Filename    = DashboardCloudProxy.cs
 *
 * Author      = Pranav Guruprasad Rao
 *
@@ -7,7 +7,7 @@
 * 
 * Project     = Cloud
 *
-* Description = Content Cloud Use Class
+* Description = Updater Cloud Use Class
 *****************************************************************************/
 
 using System;
@@ -15,12 +15,12 @@ using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 
-public class ContentCloudProxy {
+public class DashboardCloudProxy {
     Cloud cloudService;
     string folder = "content";
     Dictionary<string, string> userAuth;
 
-    public ContentCloudProxy(Dictionary<string, string> userDetails) {
+    public DashboardCloudProxy(Dictionary<string, string> userDetails) {
         cloudService = new Cloud(userDetails);
         userAuth = userDetails;
     }
