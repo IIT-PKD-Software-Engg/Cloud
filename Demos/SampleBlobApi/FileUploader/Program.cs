@@ -16,6 +16,7 @@ namespace FileUploader
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddSingleton<FileServices>();
+            builder.Services.AddSingleton<ContainerServices>();
 
             var app = builder.Build();
 

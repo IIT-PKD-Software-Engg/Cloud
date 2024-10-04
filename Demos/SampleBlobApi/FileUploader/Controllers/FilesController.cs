@@ -1,7 +1,7 @@
 ﻿using FileUploader.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SampleBlobApi.Controllers;
+namespace FileUploader.Controllers;
 
 [ApiController]
 [Route("[controller]")]

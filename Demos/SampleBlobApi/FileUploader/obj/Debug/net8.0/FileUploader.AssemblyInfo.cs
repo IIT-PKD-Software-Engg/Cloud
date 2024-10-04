@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileUploader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+feb3f74d3f335d3df69542e81aafa1d44caa14c1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc81aef5ffe1927ebdcd259ec7a9eab6ebbdbf28")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileUploader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileUploader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
