@@ -88,6 +88,5 @@ namespace FileUploader.Services
             }
             return;
         }
-        
-    }
+	}
 }
