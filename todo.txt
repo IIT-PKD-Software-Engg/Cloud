@@ -2,4 +2,5 @@
 2. azure functions
 3. give everyone rest api endpoints and access keys
 4. unit testing
-5. provide interfaces (optional)
+5. include entities in the code
+6. provide interfaces (optional)
