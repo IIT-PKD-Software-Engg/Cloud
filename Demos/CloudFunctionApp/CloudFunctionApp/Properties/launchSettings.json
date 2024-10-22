@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CloudFunctionApp": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7056",
+      "launchBrowser": false
+    }
+  }
+}
