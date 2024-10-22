@@ -1,5 +1,5 @@
-1. conig files (storing and parsing)
-2. azure functions
+1. conig files (storing and parsing) --- DONE
+2. azure functions --- Only deployment required on azure
 3. give everyone rest api endpoints and access keys
 4. unit testing
 5. include entities in the code
