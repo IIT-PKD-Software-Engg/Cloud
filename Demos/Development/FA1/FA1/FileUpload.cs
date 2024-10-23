@@ -1,4 +1,16 @@
-﻿using Microsoft.AspNetCore.WebUtilities;
+﻿/******************************************************************************
+* Filename    = FileUpload.cs
+*
+* Author      = Arnav Rajesh Kadu
+*
+* Product     = Cloud
+* 
+* Project     = Unnamed Software Project
+*
+* Description = To upload files from local to cloud
+*****************************************************************************/
+
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker;
 using System;
@@ -9,10 +21,20 @@ using Microsoft.Extensions.Logging;
 
 namespace FA1
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FileUpload
     {
         private const string _connectionString = "AzureWebJobsStorage";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="team"></param>
+        /// <param name="executionContext"></param>
+        /// <returns></returns>
         [Function("UploadFile")]
         public static async Task<HttpResponseData> UploadFile(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "upload/{team}")] HttpRequestData req,
@@ -97,8 +119,16 @@ namespace FA1
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public static class MultipartRequestHelper
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contentType"></param>
+        /// <returns></returns>
         public static string GetBoundary(string contentType)
         {
             var elements = contentType.Split(' ');

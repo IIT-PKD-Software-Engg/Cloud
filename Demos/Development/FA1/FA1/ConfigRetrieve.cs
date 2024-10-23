@@ -1,4 +1,16 @@
-﻿using Azure.Storage.Blobs;
+﻿/******************************************************************************
+* Filename    = ConfigRetrieve.cs
+*
+* Author      = Arnav Rajesh Kadu, Pranav Guruprasad Rao
+*
+* Product     = Cloud
+* 
+* Project     = Unnamed Software Project
+*
+* Description = To process configuration requests
+*****************************************************************************/
+
+using Azure.Storage.Blobs;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
@@ -10,12 +22,21 @@ using System.Threading.Tasks;
 
 namespace FA1
 {
+    /// <summary>
+    /// Configuration Retrival Class
+    /// </summary>
     public class ConfigRetrieve
     {
         private readonly BlobServiceClient _blobServiceClient;
         private readonly ILogger<ConfigRetrieve> _logger;
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Constructor for class
+        /// </summary>
+        /// <param name="blobServiceClient"></param>
+        /// <param name="logger"></param>
+        /// <param name="configuration"></param>
         public ConfigRetrieve(BlobServiceClient blobServiceClient, ILogger<ConfigRetrieve> logger, IConfiguration configuration)
         {
             _blobServiceClient = blobServiceClient;
@@ -23,6 +44,13 @@ namespace FA1
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="team"></param>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         [Function("GetConfigSetting")]
         public async Task<HttpResponseData> GetConfigSetting(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "config/{team}/{setting}")] HttpRequestData req,
@@ -37,7 +65,6 @@ namespace FA1
                 string connectionString = _configuration["AzureWebJobsStorage"];
                 _logger.LogInformation($"Connection string exists: {!string.IsNullOrEmpty(connectionString)}");
 
-                // Log container client creation attempt
                 _logger.LogInformation($"Attempting to get container client for team: {team}");
                 BlobContainerClient containerClient = _blobServiceClient.GetBlobContainerClient(team);
 

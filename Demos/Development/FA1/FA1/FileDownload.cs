@@ -56,6 +56,18 @@ namespace FA1
 }
 */
 
+/******************************************************************************
+* Filename    = FileDownload.cs
+*
+* Author      = Arnav Rajesh Kadu
+*
+* Product     = Cloud
+* 
+* Project     = Unnamed Software Project
+*
+* Description = To download files from cloud to local
+*****************************************************************************/
+
 using Azure.Storage.Blobs;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker;
@@ -66,10 +78,21 @@ using Microsoft.Extensions.Logging;
 
 namespace FA1
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FileDownload
     {
         private const string _connectionStringName = "AzureWebJobsStorage";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="team"></param>
+        /// <param name="filename"></param>
+        /// <param name="executionContext"></param>
+        /// <returns></returns>
         [Function("DownloadFile")]
         public static async Task<HttpResponseData> DownloadFile(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "download/{team}/{filename}")] HttpRequestData req,
