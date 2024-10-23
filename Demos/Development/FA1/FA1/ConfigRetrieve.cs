@@ -1,6 +1,6 @@
 ﻿/******************************************************************************
 * Filename    = ConfigRetrieve.cs
-* Author      = Arnav Rajesh Kadu, Pranav Guruprasad Rao
+* Author      = Arnav Rajesh Kadu
 * Product     = Cloud
 * Project     = Unnamed Software Project
 * Description = To process configuration requests
