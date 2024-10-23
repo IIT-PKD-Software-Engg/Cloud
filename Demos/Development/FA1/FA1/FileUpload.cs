@@ -22,20 +22,21 @@ using Microsoft.Extensions.Logging;
 namespace FA1
 {
     /// <summary>
-    /// 
+    /// Class responsible for handling file uploads to Azure Blob Storage.
     /// </summary>
     public class FileUpload
     {
         private const string _connectionString = "AzureWebJobsStorage";
 
         /// <summary>
-        /// 
+        /// Azure Function to upload files to an Azure Blob Storage container.
+        /// Trigger function with an HTTP POST request to the specified route (upload/{team}).
         /// </summary>
-        /// <param name="req"></param>
-        /// <param name="team"></param>
-        /// <param name="executionContext"></param>
-        /// <returns></returns>
-        [Function("UploadFile")]
+        /// <param name="req">The HTTP request that contains the file data to upload.</param>
+        /// <param name="team">Path parameter representing the team (used as the container name).</param>
+        /// <param name="executionContext">Execution context for the function (provides logger and other context information).</param>
+        /// <returns>An HTTP response indicating the result of the file upload operation.</returns>
+        [Function("UploadFile")] // Define the Azure Function named "UploadFile".
         public static async Task<HttpResponseData> UploadFile(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "upload/{team}")] HttpRequestData req,
             string team,
@@ -46,39 +47,44 @@ namespace FA1
 
             try
             {
+                // Create a BlobContainerClient using the connection string and the team name as the container name.
                 BlobContainerClient containerClient = new BlobContainerClient(
                     Environment.GetEnvironmentVariable(_connectionString),
                     team);
 
-                // Ensure container exists
                 await containerClient.CreateIfNotExistsAsync();
 
-                // Read and process multipart form data
-                if (!req.Headers.TryGetValues("Content-Type", out var contentTypes) ||
-                    !contentTypes.First().Contains("multipart/form-data"))
+                // Check if the request contains a valid "multipart/form-data" content type.
+                if (!req.Headers.TryGetValues("Content-Type", out var contentTypes) || !contentTypes.First().Contains("multipart/form-data"))
                 {
                     logger.LogWarning("Invalid content type received");
+                    // Create a Bad Request response for invalid content type.
                     var badRequestResponse = req.CreateResponse(HttpStatusCode.BadRequest);
                     await badRequestResponse.WriteStringAsync("Invalid content type. Expecting multipart/form-data.");
                     return badRequestResponse;
                 }
 
-                // Parse the multipart form data
+                // Extract the boundary from the Content-Type header to parse the multipart form data.
                 var boundary = MultipartRequestHelper.GetBoundary(contentTypes.First());
+                // Create a MultipartReader to read the multipart form data.
                 var reader = new MultipartReader(boundary, req.Body);
                 MultipartSection section;
 
+                // Read each section of the multipart form data.
                 while ((section = await reader.ReadNextSectionAsync()) != null)
                 {
+                    // Check if the section contains valid file data (with a content disposition header).
+                    // Ensure the disposition type is "form-data".
+                    // Ensure the section contains a file (has a file name).
                     if (ContentDispositionHeaderValue.TryParse(section.ContentDisposition, out var contentDisposition) &&
                         contentDisposition.DispositionType.Equals("form-data") &&
                         contentDisposition.FileName != null)
                     {
-                        // Clean the filename by removing quotes
+                        // Clean the filename
                         var fileName = contentDisposition.FileName
-                            ?.Trim('"')  // Remove surrounding quotes
-                            ?.Replace("\\", "")  // Remove escape characters
-                            ?.Trim();  // Remove any remaining whitespace
+                            ?.Trim('"')
+                            ?.Replace("\\", "")
+                            ?.Trim();
 
                         if (string.IsNullOrEmpty(fileName))
                         {
@@ -90,21 +96,22 @@ namespace FA1
 
                         BlobClient blobClient = containerClient.GetBlobClient(fileName);
 
-                        // Upload file to the blob
+                        // Upload the file's content to the blob.
                         using (var stream = section.Body)
                         {
                             await blobClient.UploadAsync(stream, true);
                             logger.LogInformation($"File {fileName} uploaded successfully");
                         }
 
+                        // Create an OK response indicating the file was successfully uploaded.
                         var response = req.CreateResponse(HttpStatusCode.OK);
                         await response.WriteStringAsync($"File {fileName} uploaded successfully to {team} container.");
                         return response;
                     }
                 }
 
-                // If no file section is found, return Bad Request
                 logger.LogWarning("No valid file section found in request");
+                // Create a Bad Request response indicating no valid file was provided.
                 var noFileResponse = req.CreateResponse(HttpStatusCode.BadRequest);
                 await noFileResponse.WriteStringAsync("No valid file provided.");
                 return noFileResponse;
@@ -112,6 +119,7 @@ namespace FA1
             catch (Exception ex)
             {
                 logger.LogError(ex, "Error uploading file");
+                // Create an Internal Server Error response with the exception message.
                 var errorResponse = req.CreateResponse(HttpStatusCode.InternalServerError);
                 await errorResponse.WriteStringAsync($"Error uploading file: {ex.Message}");
                 return errorResponse;
@@ -120,20 +128,22 @@ namespace FA1
     }
 
     /// <summary>
-    /// 
+    /// Helper class for handling multipart form data requests.
     /// </summary>
     public static class MultipartRequestHelper
     {
         /// <summary>
-        /// 
+        /// Extracts the boundary string from the Content-Type header for parsing multipart form data.
         /// </summary>
-        /// <param name="contentType"></param>
-        /// <returns></returns>
+        /// <param name="contentType">The Content-Type header value.</param>
+        /// <returns>The boundary string used to separate parts of the multipart form data.</returns>
         public static string GetBoundary(string contentType)
         {
             var elements = contentType.Split(' ');
+            // Find the part of the header that contains the boundary.
             var boundaryElement = elements.FirstOrDefault(entry => entry.StartsWith("boundary="));
-            var boundary = boundaryElement?.Substring("boundary=".Length).Trim('"');  // Remove quotes from boundary
+            // Extract the boundary value, removing any surrounding quotes.
+            var boundary = boundaryElement?.Substring("boundary=".Length).Trim('"');
             return boundary;
         }
     }
