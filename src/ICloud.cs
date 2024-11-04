@@ -10,14 +10,16 @@
 * Description = Cloud Interface
 *****************************************************************************/
 
+/// Cloud.Post(SASToken, "content", "/broadcast/messages.txt", data);
+
 using System;
 using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 
 public interface ICloud {
-	Dictionary<string, object> Get(userDetails, string folder, string dataUri);
-	int Post(userDetails, string folder, object data);
-	bool Put(userDetails, string folder, string oldDataUri, object data);
-	bool Delete(userDetails, string folder, string dataUri);
+	Dictionary<string, object> Get(string SasToken, string containerName, string dataUri);
+	int Post(string SasToken, string containerName, stirng dataUri, object data);
+	bool Put(string SasToken, string containerName, string oldDataUri, object data);
+	bool Delete(string SasToken, string containerName, string dataUri);
 }
