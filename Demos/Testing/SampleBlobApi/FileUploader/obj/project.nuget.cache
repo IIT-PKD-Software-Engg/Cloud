@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9i2TGMWKx6s=",
+  "dgSpecHash": "DETbDkSknq0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\SampleBlobApi\\FileUploader\\FileUploader.csproj",
+  "projectFilePath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\SampleBlobApi\\FileUploader\\FileUploader.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ARNAV\\.nuget\\packages\\azure.core\\1.43.0\\azure.core.1.43.0.nupkg.sha512",
     "C:\\Users\\ARNAV\\.nuget\\packages\\azure.storage.blobs\\12.22.1\\azure.storage.blobs.12.22.1.nupkg.sha512",

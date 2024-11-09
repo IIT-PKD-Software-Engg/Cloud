@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\SampleBlobApi\\FileUploader\\FileUploader.csproj": {}
+    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\SampleBlobApi\\FileUploader\\FileUploader.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\SampleBlobApi\\FileUploader\\FileUploader.csproj": {
+    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\SampleBlobApi\\FileUploader\\FileUploader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\SampleBlobApi\\FileUploader\\FileUploader.csproj",
+        "projectUniqueName": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\SampleBlobApi\\FileUploader\\FileUploader.csproj",
         "projectName": "FileUploader",
-        "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\SampleBlobApi\\FileUploader\\FileUploader.csproj",
+        "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\SampleBlobApi\\FileUploader\\FileUploader.csproj",
         "packagesPath": "C:\\Users\\ARNAV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\SampleBlobApi\\FileUploader\\obj\\",
+        "outputPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\SampleBlobApi\\FileUploader\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ARNAV\\AppData\\Roaming\\NuGet\\NuGet.Config",

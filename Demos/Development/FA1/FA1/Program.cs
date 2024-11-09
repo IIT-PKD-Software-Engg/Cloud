@@ -1,17 +1,47 @@
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Azure.Storage.Blobs;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using FA1;
 
-var host = new HostBuilder()
-    .ConfigureFunctionsWebApplication()
-    .ConfigureServices(services =>
+public class Program
+{
+    public static void Main(string[] args)
     {
-        services.AddApplicationInsightsTelemetryWorkerService();
-        services.ConfigureFunctionsApplicationInsights();
+        IHost host = new HostBuilder()
+            .ConfigureFunctionsWebApplication()
+            .ConfigureServices((context, services) => {
+                services.AddApplicationInsightsTelemetryWorkerService();
+                services.ConfigureFunctionsApplicationInsights();
 
-        // Register BlobServiceClient
+                services.AddSingleton<IConfiguration>(context.Configuration);
+
+                services.AddLogging();
+
+                services.AddSingleton(sp => {
+                    IConfiguration configuration = sp.GetRequiredService<IConfiguration>();
+                    string? connectionString = configuration["AzureWebJobsStorage"];
+                    if (string.IsNullOrEmpty(connectionString))
+                    {
+                        throw new InvalidOperationException("AzureWebJobsStorage connection string is not configured.");
+                    }
+                    return new BlobServiceClient(connectionString);
+                });
+
+                services.AddScoped<ConfigRetrieve>();
+            })
+            .Build();
+
+        host.Run();
+    }
+}
+
+/*               
+
+         Register BlobServiceClient
         services.AddSingleton(sp =>
         {
             var configuration = sp.GetRequiredService<IConfiguration>();
@@ -21,4 +51,6 @@ var host = new HostBuilder()
     })
     .Build();
 
-host.Run();
+        host.Run();
+    }
+}*/
