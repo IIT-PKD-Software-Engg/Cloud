@@ -97,7 +97,7 @@ public class FileDownload
     /// <returns>An HTTP response with the file content or an error message.</returns>
     [Function("DownloadFile")]
     public static async Task<HttpResponseData> DownloadFile(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "download/{team}/{filename}")] HttpRequestData req,
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "download/{team}/{filename}")] HttpRequestData req,
         string team,
         string filename,
         FunctionContext executionContext)

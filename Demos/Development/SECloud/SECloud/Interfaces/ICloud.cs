@@ -10,9 +10,9 @@ namespace SECloud.Interfaces
     public interface ICloud
     {
         Task<ServiceResponse<string>> UploadAsync(string blobName, Stream content, string contentType);
-        Task<ServiceResponse<string>> UpdateAsync(string blobName);
+        Task<ServiceResponse<string>> UpdateAsync(string blobName, Stream content, string contentType);
         Task<ServiceResponse<Stream>> DownloadAsync(string blobName);
         Task<ServiceResponse<bool>> DeleteAsync(string blobName);
-        Task<ServiceResponse<List<string>>> ListBlobsAsync(string prefix);
+        Task<ServiceResponse<List<string>>> ListBlobsAsync();
     }
 }

@@ -16,7 +16,7 @@ public class FileUpdate
 
     [Function("UpdateFile")]
     public static async Task<HttpResponseData> UpdateFile(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "put/{team}/{filename}")] HttpRequestData req,
+        [HttpTrigger(AuthorizationLevel.Function, "put", Route = "put/{team}/{filename}")] HttpRequestData req,
         string team,
         string filename,
         FunctionContext executionContext)
