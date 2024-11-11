@@ -766,7 +766,7 @@ public class BlobListResponse
 ### Usage Example
 ```csharp
 string searchKey = "Theme";
-string searchValue = "True";
+string searchValue = "Dark";
 var searchResponse = await cloudService.SearchJsonFilesAsync(searchKey, searchValue);
 ```
 
