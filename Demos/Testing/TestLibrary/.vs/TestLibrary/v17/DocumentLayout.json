@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\TestLibrary\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A28B95B7-8B9C-4BEB-AE6F-66D5B0903B3D}|TestLibrary\\TestLibrary.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\testing\\testlibrary\\testlibrary\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A28B95B7-8B9C-4BEB-AE6F-66D5B0903B3D}|TestLibrary\\TestLibrary.csproj|solutionrelative:testlibrary\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A28B95B7-8B9C-4BEB-AE6F-66D5B0903B3D}|TestLibrary\\TestLibrary.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\testing\\testlibrary\\testlibrary\\cloudconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A28B95B7-8B9C-4BEB-AE6F-66D5B0903B3D}|TestLibrary\\TestLibrary.csproj|solutionrelative:testlibrary\\cloudconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A28B95B7-8B9C-4BEB-AE6F-66D5B0903B3D}|TestLibrary\\TestLibrary.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\testing\\testlibrary\\testlibrary\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A28B95B7-8B9C-4BEB-AE6F-66D5B0903B3D}|TestLibrary\\TestLibrary.csproj|solutionrelative:testlibrary\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "CloudConfig.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\TestLibrary\\TestLibrary\\CloudConfig.cs",
               "RelativeDocumentMoniker": "TestLibrary\\CloudConfig.cs",
@@ -30,17 +30,18 @@
               "RelativeToolTip": "TestLibrary\\CloudConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T07:06:26.243Z"
+              "WhenOpened": "2024-11-09T07:06:26.243Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\TestLibrary\\TestLibrary\\Program.cs",
               "RelativeDocumentMoniker": "TestLibrary\\Program.cs",
               "ToolTip": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Testing\\TestLibrary\\TestLibrary\\Program.cs",
               "RelativeToolTip": "TestLibrary\\Program.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAAACUAAAAqAAAA",
+              "ViewState": "AQIAABMAAAAAAAAAAAA0wEMAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-09T07:01:54.954Z",
               "EditorCaption": ""

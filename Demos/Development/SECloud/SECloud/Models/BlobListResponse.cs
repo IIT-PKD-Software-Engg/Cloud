@@ -8,6 +8,6 @@ namespace SECloud.Models
 {
     public class BlobListResponse
     {
-        public List<string> Blobs { get; set; }
+        public List<string>? Blobs { get; set; }
     }
 }
