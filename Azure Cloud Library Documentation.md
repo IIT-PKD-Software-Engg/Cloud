@@ -35,6 +35,28 @@ Uploads files to Azure Blob Storage with support for different file types and si
 - Large file upload (5MB+)
 - Concurrent multiple file uploads
 
+### Return Type
+- Returns `ServiceResponse<string>` where the string contains the URL of the uploaded blob
+- Success case returns the blob URL
+- Failure case returns error message
+
+### Example Response
+```csharp
+// Success case
+{
+    "Success": true,
+    "Data": "https://storage.blob.core.windows.net/container/example.txt",
+    "Message": "Successfully uploaded example.txt"
+}
+
+// Failure case
+{
+    "Success": false,
+    "Data": null,
+    "Message": "Upload failed: 400 - Invalid file name"
+}
+```
+
 ### Usage Example
 ```csharp
 // Single file upload
@@ -213,6 +235,28 @@ Downloads files from Azure Blob Storage and saves them locally.
 - Automatic local file creation
 - Error handling for missing blobs
 
+### Return Type
+- Returns `ServiceResponse<Stream>` containing the downloaded file content
+- Success case returns the file stream
+- Failure case returns null stream with error message
+
+### Example Response
+```csharp
+// Success case
+{
+    "Success": true,
+    "Data": <MemoryStream>, // Contains file content
+    "Message": null
+}
+
+// Failure case
+{
+    "Success": false,
+    "Data": null,
+    "Message": "Download failed: Blob not found"
+}
+```
+
 ### Usage Example
 ```csharp
 string blobName = "example.txt";
@@ -311,6 +355,28 @@ Retrieves configuration settings from the cloud storage.
 - Key-based configuration retrieval
 - Structured response handling
 
+### Return Type
+- Returns `ServiceResponse<string>` containing the configuration value
+- Success case returns the configuration setting value
+- Failure case returns error message
+
+### Example Response
+```csharp
+// Success case
+{
+    "Success": true,
+    "Data": "Dark",  // Configuration value
+    "Message": null
+}
+
+// Failure case
+{
+    "Success": false,
+    "Data": null,
+    "Message": "Config retrieval failed: Setting not found"
+}
+```
+
 ### Usage Example
 ```csharp
 string setting = "Theme";
@@ -367,6 +433,28 @@ Removes specified blobs from the storage container.
 - Single blob deletion
 - Success/failure status reporting
 
+### Return Type
+- Returns `ServiceResponse<bool>` indicating deletion success
+- Success case returns true
+- Failure case returns false with error message
+
+### Example Response
+```csharp
+// Success case
+{
+    "Success": true,
+    "Data": true,
+    "Message": null
+}
+
+// Failure case
+{
+    "Success": false,
+    "Data": false,
+    "Message": "Delete failed: Blob not found"
+}
+```
+
 ### Usage Example
 ```csharp
 string blobName = "file-to-delete.txt";
@@ -419,6 +507,32 @@ Lists all blobs in the specified container.
 ### Features
 - Container content enumeration
 - Filtered listing capabilities
+
+### Return Type
+- Returns `ServiceResponse<List<string>>` containing blob names
+- Success case returns list of blob names
+- Failure case returns null or empty list with error message
+
+### Example Response
+```csharp
+// Success case
+{
+    "Success": true,
+    "Data": [
+        "document1.txt",
+        "image1.jpg",
+        "config.json"
+    ],
+    "Message": null
+}
+
+// Failure case
+{
+    "Success": false,
+    "Data": null,
+    "Message": "List failed: Container not found"
+}
+```
 
 ### Usage Example
 ```csharp
@@ -486,6 +600,28 @@ Updates existing blob content or adds new one in the storage.
 - Content type specification
 - Stream-based updates
 - Local file update support
+
+### Return Type
+- Returns `ServiceResponse<string>` containing update confirmation
+- Success case returns updated blob URL
+- Failure case returns error message
+
+### Example Response
+```csharp
+// Success case
+{
+    "Success": true,
+    "Data": "https://storage.blob.core.windows.net/container/updated.txt",
+    "Message": "Successfully updated updated.txt"
+}
+
+// Failure case
+{
+    "Success": false,
+    "Data": null,
+    "Message": "Update failed: 404 - Blob not found"
+}
+```
 
 ### Usage Example
 ```csharp
@@ -560,6 +696,46 @@ Searches through JSON files in the storage for specific key-value pairs.
 - Formatted JSON results
 - Match count reporting
 
+### Return Type
+- Returns `ServiceResponse<JsonSearchResponse>` containing search results
+- Success case returns match count and matched files
+- Failure case returns error message
+
+### Example Response
+```csharp
+// Success case
+{
+    "Success": true,
+    "Data": {
+        "MatchCount": 2,
+        "Matches": [
+            {
+                "FileName": "config1.json",
+                "Content": {
+                    "Theme": "Dark",
+                    "Language": "EN"
+                }
+            },
+            {
+                "FileName": "config2.json",
+                "Content": {
+                    "Theme": "Dark",
+                    "Language": "FR"
+                }
+            }
+        ]
+    },
+    "Message": "Search completed successfully. Found 2 matches."
+}
+
+// Failure case
+{
+    "Success": false,
+    "Data": null,
+    "Message": "Search failed: Invalid search parameters"
+}
+```
+
 ### Supporting Types
 ```csharp
 public class ServiceResponse<T>
@@ -569,7 +745,7 @@ public class ServiceResponse<T>
     public T Data { get; set; }
 }
 
-public class JsonSearchResult
+public class JsonSearchResponse
 {
     public int MatchCount { get; set; }
     public List<JsonMatch> Matches { get; set; }
@@ -579,6 +755,11 @@ public class JsonMatch
 {
     public string FileName { get; set; }
     public object Content { get; set; }
+}
+
+public class BlobListResponse
+{
+    public List<string> Blobs { get; set; }
 }
 ```
 
