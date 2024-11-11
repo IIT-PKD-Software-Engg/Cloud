@@ -48,7 +48,7 @@ public class ConfigRetrieve
     /// <returns>An HTTP response with the requested setting or error.</returns>
     [Function("GetConfigSetting")]
     public async Task<HttpResponseData> GetConfigSetting(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "config/{team}/{setting}")] HttpRequestData req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "config/{team}/{setting}")] HttpRequestData req,
         string team,
         string setting)
     {

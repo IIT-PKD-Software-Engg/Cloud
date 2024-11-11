@@ -40,7 +40,7 @@ public class JsonSearch
     /// <returns>List of matching files with their content</returns>
     [Function("SearchJsonFiles")]
     public async Task<HttpResponseData> SearchJsonFiles(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "search/{team}")] HttpRequestData req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "search/{team}")] HttpRequestData req,
         string team)
     {
         try

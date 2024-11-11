@@ -38,7 +38,7 @@ public class FileUpload
     /// <returns>An HTTP response indicating the result of the file upload operation.</returns>
     [Function("UploadFile")] // Define the Azure Function named "UploadFile".
     public static async Task<HttpResponseData> UploadFile(
-        [HttpTrigger(AuthorizationLevel.Function, "post", Route = "upload/{team}")] HttpRequestData req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "upload/{team}")] HttpRequestData req,
         string team,
         FunctionContext executionContext)
     {

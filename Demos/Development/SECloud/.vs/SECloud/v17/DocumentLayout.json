@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\development\\secloud\\secloud\\interfaces\\icloud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|solutionrelative:secloud\\interfaces\\icloud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\development\\secloud\\secloud\\services\\cloudservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|solutionrelative:secloud\\services\\cloudservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\development\\secloud\\secloud\\models\\bloblistresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|solutionrelative:secloud\\models\\bloblistresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\development\\secloud\\secloud\\models\\jsonsearchmatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|solutionrelative:secloud\\models\\jsonsearchmatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\development\\secloud\\secloud\\interfaces\\icloud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|solutionrelative:secloud\\interfaces\\icloud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\development\\secloud\\secloud\\models\\jsonsearchresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|solutionrelative:secloud\\models\\jsonsearchresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\development\\secloud\\secloud\\models\\bloblistresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|solutionrelative:secloud\\models\\bloblistresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40D6D79C-B8DC-4866-AE96-59CBF2BFDE74}|SECloud\\SECloud.csproj|c:\\users\\arnav\\desktop\\software engineering\\lab project\\demos\\development\\secloud\\secloud\\models\\serviceresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,11 +46,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "JsonSearchMatch.cs",
+              "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\JsonSearchMatch.cs",
+              "RelativeDocumentMoniker": "SECloud\\Models\\JsonSearchMatch.cs",
+              "ToolTip": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\JsonSearchMatch.cs",
+              "RelativeToolTip": "SECloud\\Models\\JsonSearchMatch.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T19:43:37.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "JsonSearchResponse.cs",
+              "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\JsonSearchResponse.cs",
+              "RelativeDocumentMoniker": "SECloud\\Models\\JsonSearchResponse.cs",
+              "ToolTip": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\JsonSearchResponse.cs",
+              "RelativeToolTip": "SECloud\\Models\\JsonSearchResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T19:41:20.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "BlobListResponse.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\BlobListResponse.cs",
               "RelativeDocumentMoniker": "SECloud\\Models\\BlobListResponse.cs",
@@ -50,12 +84,11 @@
               "RelativeToolTip": "SECloud\\Models\\BlobListResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T17:36:30.618Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T17:36:30.618Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "FileMetadata.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\FileMetadata.cs",
               "RelativeDocumentMoniker": "SECloud\\Models\\FileMetadata.cs",
@@ -67,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "BlobConfig.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\BlobConfig.cs",
               "RelativeDocumentMoniker": "SECloud\\Models\\BlobConfig.cs",
@@ -79,33 +112,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CloudService.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Services\\CloudService.cs",
               "RelativeDocumentMoniker": "SECloud\\Services\\CloudService.cs",
               "ToolTip": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Services\\CloudService.cs",
               "RelativeToolTip": "SECloud\\Services\\CloudService.cs",
-              "ViewState": "AQIAAOMAAAAAAAAAAAAAwPgAAAARAAAA",
+              "ViewState": "AQIAAPsAAAAAAAAAAAAwwDEBAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-08T07:43:15.503Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ICloud.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Interfaces\\ICloud.cs",
               "RelativeDocumentMoniker": "SECloud\\Interfaces\\ICloud.cs",
               "ToolTip": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Interfaces\\ICloud.cs",
               "RelativeToolTip": "SECloud\\Interfaces\\ICloud.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAxwA8AAAA7AAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-08T07:30:52.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ServiceResponse.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\ServiceResponse.cs",
               "RelativeDocumentMoniker": "SECloud\\Models\\ServiceResponse.cs",
@@ -117,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "StorageOptions.cs",
               "DocumentMoniker": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Development\\SECloud\\SECloud\\Models\\StorageOptions.cs",
               "RelativeDocumentMoniker": "SECloud\\Models\\StorageOptions.cs",

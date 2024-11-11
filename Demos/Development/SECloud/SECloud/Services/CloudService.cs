@@ -257,5 +257,52 @@ namespace SECloud.Services
                 throw;
             }
         }
+
+        public async Task<ServiceResponse<JsonSearchResponse>> SearchJsonFilesAsync(string searchKey, string searchValue)
+        {
+            _logger.LogInformation("Starting JSON search with key: {SearchKey}, value: {SearchValue}", searchKey, searchValue);
+
+            try
+            {
+                if (string.IsNullOrEmpty(searchKey) || string.IsNullOrEmpty(searchValue))
+                {
+                    return new ServiceResponse<JsonSearchResponse>
+                    {
+                        Success = false,
+                        Message = "Both searchKey and searchValue are required"
+                    };
+                }
+
+                var requestUrl = GetRequestUrl($"search/{_team}") + $"&key={Uri.EscapeDataString(searchKey)}&value={Uri.EscapeDataString(searchValue)}";
+                var response = await _httpClient.GetAsync(requestUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var searchResponse = await response.Content.ReadFromJsonAsync<JsonSearchResponse>();
+                    _logger.LogInformation("Successfully completed JSON search. Found {MatchCount} matches", searchResponse?.MatchCount ?? 0);
+
+                    return new ServiceResponse<JsonSearchResponse>
+                    {
+                        Success = true,
+                        Data = searchResponse,
+                        Message = $"Search completed successfully. Found {searchResponse?.MatchCount ?? 0} matches."
+                    };
+                }
+
+                _logger.LogError("JSON search failed. Status: {StatusCode}, Reason: {Reason}",
+                    response.StatusCode, response.ReasonPhrase);
+
+                return new ServiceResponse<JsonSearchResponse>
+                {
+                    Success = false,
+                    Message = $"Search failed: {response.ReasonPhrase}"
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception occurred during JSON search");
+                throw;
+            }
+        }
     }
 }

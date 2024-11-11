@@ -14,5 +14,6 @@ namespace SECloud.Interfaces
         Task<ServiceResponse<Stream>> DownloadAsync(string blobName);
         Task<ServiceResponse<bool>> DeleteAsync(string blobName);
         Task<ServiceResponse<List<string>>> ListBlobsAsync();
+        Task<ServiceResponse<JsonSearchResponse>> SearchJsonFilesAsync(string searchkey, string searchValue);
     }
 }

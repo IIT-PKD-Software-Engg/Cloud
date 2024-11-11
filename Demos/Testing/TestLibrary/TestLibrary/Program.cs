@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SECloud.Services;
@@ -9,7 +10,7 @@ using SECloud.Models;
 
 namespace SECloudClient
 {
-    class UpdateBlobProgram
+    class SearchJsonProgram
     {
         static async Task Main(string[] args)
         {
@@ -17,29 +18,60 @@ namespace SECloudClient
             var serviceProvider = new ServiceCollection()
                 .AddLogging(config => config.AddConsole().SetMinimumLevel(LogLevel.Debug))
                 .BuildServiceProvider();
-            var logger = serviceProvider.GetService<ILogger<CloudService>>();
 
+            var logger = serviceProvider.GetService<ILogger<CloudService>>();
             var httpClient = new HttpClient();
 
             // Initialize CloudService with base URL, team/container, and optional SAS token
-            var cloudService = new CloudService("https://secloudapp-2024.azurewebsites.net/api", "testblobcontainer", "sp=racwdli&st=2024-11-09T18:04:23Z&se=2024-11-10T02:04:23Z&spr=https&sv=2022-11-02&sr=c&sig=7sWxFG6gYREdnJSgHQ4GcKfAM1fzTViFGNag3rmK%2Fe8%3D", httpClient, logger);
+            var cloudService = new CloudService(
+                "https://secloudapp-2024.azurewebsites.net/api",
+                "testblobcontainer",
+                "",
+                httpClient,
+                logger
+            );
 
-            string blobName = "cloud_local_trial.txt";
-            string contentType = "text/plain";
-
-            // Open file as stream to use as content
-            using var contentStream = new FileStream(@"C:\Users\ARNAV\Desktop\cloud_local_trial.txt", FileMode.Open, FileAccess.Read);
-
-            var response = await cloudService.UpdateAsync(blobName, contentStream, contentType);
-
-            if (response.Success)
+            try
             {
-                logger.LogInformation("Blob updated successfully: {Message}", response.Message);
+                // Search parameters
+                string searchKey = "Theme";  // Example key to search for
+                string searchValue = "True";  // Example value to search for
+
+                logger.LogInformation("Starting JSON search for key: {Key}, value: {Value}", searchKey, searchValue);
+
+                var searchResponse = await cloudService.SearchJsonFilesAsync(searchKey, searchValue);
+
+                if (searchResponse.Success)
+                {
+                    logger.LogInformation("Search completed successfully");
+                    logger.LogInformation("Found {Count} matches", searchResponse.Data.MatchCount);
+
+                    // Process and display each match
+                    foreach (var match in searchResponse.Data.Matches)
+                    {
+                        logger.LogInformation("Match found in file: {FileName}", match.FileName);
+
+                        // Pretty print the JSON content
+                        var jsonFormatted = JsonSerializer.Serialize(match.Content, new JsonSerializerOptions
+                        {
+                            WriteIndented = true
+                        });
+                        logger.LogInformation("File content:\n{Content}", jsonFormatted);
+                    }
+                }
+                else
+                {
+                    logger.LogError("Search failed: {Message}", searchResponse.Message);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                logger.LogError("Updating blob failed: {Message}", response.Message);
+                logger.LogError(ex, "An error occurred while performing the search");
             }
+
+            // Optional: Wait for user input before closing
+            Console.WriteLine("\nPress any key to exit...");
+            Console.ReadKey();
         }
     }
 }

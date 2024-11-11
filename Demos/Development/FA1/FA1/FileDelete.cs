@@ -18,7 +18,7 @@ public class FileDelete
 
     [Function("DeleteFile")]
     public static async Task<HttpResponseData> DeleteFile(
-        [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "delete/{team}/{filename}")] HttpRequestData req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "delete/{team}/{filename}")] HttpRequestData req,
         string team,
         string filename,
         FunctionContext executionContext)

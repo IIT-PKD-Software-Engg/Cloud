@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\SECloudTest\\SECloudTest.csproj": {}
+    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\SECloudTest\\SECloudTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\FA1\\FA1.csproj": {
+    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\FA1\\FA1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\FA1\\FA1.csproj",
+        "projectUniqueName": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\FA1\\FA1.csproj",
         "projectName": "FA1",
-        "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\FA1\\FA1.csproj",
+        "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\FA1\\FA1.csproj",
         "packagesPath": "C:\\Users\\ARNAV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\FA1\\obj\\",
+        "outputPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\FA1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ARNAV\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -106,14 +106,14 @@
         }
       }
     },
-    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\SECloudTest\\SECloudTest.csproj": {
+    "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\SECloudTest\\SECloudTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\SECloudTest\\SECloudTest.csproj",
+        "projectUniqueName": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\SECloudTest\\SECloudTest.csproj",
         "projectName": "SECloudTest",
-        "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\SECloudTest\\SECloudTest.csproj",
+        "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\SECloudTest\\SECloudTest.csproj",
         "packagesPath": "C:\\Users\\ARNAV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\SECloudTest\\obj\\",
+        "outputPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\SECloudTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ARNAV\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -131,8 +131,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\FA1\\FA1.csproj": {
-                "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\SE Project\\Cloud Module\\FA1\\FA1.csproj"
+              "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\FA1\\FA1.csproj": {
+                "projectPath": "C:\\Users\\ARNAV\\Desktop\\Software Engineering\\Lab Project\\Demos\\Cloud Module\\FA1\\FA1.csproj"
               }
             }
           }
