@@ -1,6 +1,6 @@
-1. conig files (storing and parsing) --- DONE
-2. azure functions --- Only deployment required on azure
-3. give everyone rest api endpoints and access keys
-4. unit testing
-5. include entities in the code
+1. unit testing and testing for azure functions and library functions
+2. FUCK DASHBOARD
+3. FUCK DASHBOARD
+4. FUCK DASHBOARD
+5. FUCK DASHBOARD
 6. provide interfaces (optional)

@@ -754,7 +754,7 @@ public class JsonSearchResponse
     public List<JsonMatch> Matches { get; set; }
 }
 
-public class JsonMatch
+public class JsonSearchMatch
 {
     public string FileName { get; set; }
     public object Content { get; set; }
