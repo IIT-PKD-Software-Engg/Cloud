@@ -1,4 +1,4 @@
-# Azure Cloud Library Documentation
+# SE Cloud Library Documentation
 
 ## Overview
 This documentation covers the implementation and usage of seven core functions for interacting with Azure Blob Storage through a custom Cloud Service interface. The service is designed to handle basic blob storage operations with proper logging and error handling.
