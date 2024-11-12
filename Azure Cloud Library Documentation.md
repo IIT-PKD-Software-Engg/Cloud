@@ -6,8 +6,11 @@ This documentation covers the implementation and usage of seven core functions f
 ## Prerequisites
 - .NET Core/.NET 5+ SDK
 - Microsoft.Extensions.DependencyInjection
+- Microsoft.Extensions.Http
 - Microsoft.Extensions.Logging
+- Microsoft.Extensions.Logging.Console
 - System.Net.Http
+
 
 ## Base Configuration
 All examples use the following base configuration:
