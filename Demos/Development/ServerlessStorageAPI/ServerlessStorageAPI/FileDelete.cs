@@ -10,7 +10,7 @@ using Azure.Storage.Blobs;
 using System.Net;
 using Microsoft.Extensions.Logging;
 
-namespace FA1;
+namespace ServerlessStorageAPI;
 
 public class FileDelete
 {

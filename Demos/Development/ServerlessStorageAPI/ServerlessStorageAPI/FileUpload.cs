@@ -19,7 +19,7 @@ using System.Net.Http.Headers;
 using Azure.Storage.Blobs;
 using Microsoft.Extensions.Logging;
 
-namespace FA1;
+namespace ServerlessStorageAPI;
 
 /// <summary>
 /// Class responsible for handling file uploads to Azure Blob Storage.

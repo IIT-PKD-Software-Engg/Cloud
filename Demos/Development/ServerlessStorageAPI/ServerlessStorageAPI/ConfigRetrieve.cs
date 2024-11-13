@@ -17,7 +17,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Azure;
 
-namespace FA1;
+namespace ServerlessStorageAPI;
 
 /// <summary>
 /// Configuration Retrieval Class

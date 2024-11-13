@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FA1.Model;
+namespace ServerlessStorageAPI.Model;
 /// <summary>
 /// Class to represent blob information in the response.
 /// </summary>

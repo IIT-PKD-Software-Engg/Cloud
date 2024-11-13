@@ -1,62 +1,4 @@
-﻿/*using Azure.Storage.Blobs;
-using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.Azure.Functions.Worker;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-
-namespace FA1
-{
-    public class FileDownload
-    {
-        private const string _connectionString = "AzureWebJobsStorage";
-
-        [Function("DownloadFile")]
-        public static async Task<HttpResponseData> DownloadFile(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "download/{team}/{filename}")] HttpRequestData req,
-    string team,
-    string filename,
-    FunctionContext executionContext)
-        {
-            var logger = executionContext.GetLogger<FileDownload>();
-            logger.LogInformation($"Attempting to download file '{filename}' from container '{team}'.");
-
-            var connectionString = Environment.GetEnvironmentVariable(_connectionString);
-            logger.LogInformation($"Connection string: {connectionString}");
-
-            BlobContainerClient containerClient = new BlobContainerClient(connectionString, team);
-            BlobClient blobClient = containerClient.GetBlobClient(filename);
-
-            logger.LogInformation($"Blob URI: {blobClient.Uri}");
-
-            if (await blobClient.ExistsAsync())
-            {
-                logger.LogInformation($"File '{filename}' exists in the container '{team}'.");
-
-                var blobDownloadInfo = await blobClient.DownloadAsync();
-                var response = req.CreateResponse(HttpStatusCode.OK);
-                response.Headers.Add("Content-Type", blobDownloadInfo.Value.Details.ContentType);
-                response.Headers.Add("Content-Disposition", $"attachment; filename={filename}");
-
-                await blobDownloadInfo.Value.Content.CopyToAsync(response.Body);
-                return response;
-            }
-
-            logger.LogWarning($"File '{filename}' not found in the container '{team}'.");
-
-            var notFoundResponse = req.CreateResponse(HttpStatusCode.NotFound);
-            await notFoundResponse.WriteStringAsync($"File {filename} not found in {team} container.");
-            return notFoundResponse;
-        }
-    }
-}
-*/
-
-/******************************************************************************
+﻿/******************************************************************************
 * Filename    = FileDownload.cs
 *
 * Author      = Arnav Rajesh Kadu
@@ -76,7 +18,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace FA1;
+namespace ServerlessStorageAPI;
 
 /// <summary>
 /// Class responsible for downloading files from an Azure Blob Storage container.

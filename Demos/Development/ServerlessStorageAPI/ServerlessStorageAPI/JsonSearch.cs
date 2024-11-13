@@ -11,7 +11,7 @@ using Azure;
 using System.Collections.Generic;
 using System.IO;
 
-namespace FA1;
+namespace ServerlessStorageAPI;
 
 /// <summary>
 /// JSON Search Class for searching through blob containers

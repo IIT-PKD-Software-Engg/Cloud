@@ -8,7 +8,7 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.Extensions.Logging;
 
-namespace FA1;
+namespace ServerlessStorageAPI;
 
 public class FileUpdate
 {

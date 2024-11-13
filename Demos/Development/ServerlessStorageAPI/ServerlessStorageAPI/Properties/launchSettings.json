@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "FA1": {
+    "ServerlessStorageAPI": {
       "commandName": "Project",
       "commandLineArgs": "--port 7026",
       "launchBrowser": false

@@ -18,7 +18,7 @@ using Azure.Storage.Blobs;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
-namespace FA1;
+namespace ServerlessStorageAPI;
 
 /// <summary>
 /// Class responsible for listing blobs in an Azure Blob Storage container.
