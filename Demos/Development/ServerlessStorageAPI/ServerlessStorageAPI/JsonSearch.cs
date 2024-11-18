@@ -1,4 +1,16 @@
-﻿using Azure.Storage.Blobs;
+﻿/******************************************************************************
+ * Filename    = JsonSearch.cs
+ *
+ * Author      = Arnav Rajesh Kadu
+ *
+ * Product     = Cloud
+ * 
+ * Project     = Unnamed Software Project
+ *
+ * Description = Searches JSON files in Azure Blob Storage for specified key-value pairs
+ *****************************************************************************/
+
+using Azure.Storage.Blobs;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
@@ -9,12 +21,12 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Azure;
 using System.Collections.Generic;
-using System.IO;
 
 namespace ServerlessStorageAPI;
 
 /// <summary>
-/// JSON Search Class for searching through blob containers
+/// JSON Search Class for searching through blob containers to locate JSON files
+/// containing specified key-value pairs.
 /// </summary>
 public class JsonSearch
 {
@@ -23,8 +35,11 @@ public class JsonSearch
     private readonly IConfiguration _configuration;
 
     /// <summary>
-    /// Constructor for JsonSearch class
+    /// Initializes a new instance of the JsonSearch class.
     /// </summary>
+    /// <param name="blobServiceClient">Client to interact with Azure Blob Storage.</param>
+    /// <param name="logger">Logger to record log messages.</param>
+    /// <param name="configuration">Configuration for accessing settings.</param>
     public JsonSearch(BlobServiceClient blobServiceClient, ILogger<JsonSearch> logger, IConfiguration configuration)
     {
         _blobServiceClient = blobServiceClient;
@@ -33,11 +48,12 @@ public class JsonSearch
     }
 
     /// <summary>
-    /// Azure Function to search for specific key-value pairs across all JSON files in a container
+    /// Azure Function to search for specified key-value pairs across all JSON files in a container.
+    /// Triggered by an HTTP GET request.
     /// </summary>
-    /// <param name="req">HTTP request data</param>
-    /// <param name="team">Container name to search in</param>
-    /// <returns>List of matching files with their content</returns>
+    /// <param name="req">The HTTP request initiating the search.</param>
+    /// <param name="team">Name of the container to search in.</param>
+    /// <returns>A response containing matching JSON files and their content.</returns>
     [Function("SearchJsonFiles")]
     public async Task<HttpResponseData> SearchJsonFiles(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "search/{team}")] HttpRequestData req,
@@ -47,11 +63,12 @@ public class JsonSearch
         {
             _logger.LogInformation($"Search function triggered for container: {team}");
 
-            // Get search parameters from query string
+            // Retrieve search parameters from the query string
             System.Collections.Specialized.NameValueCollection queryDictionary = System.Web.HttpUtility.ParseQueryString(req.Url.Query);
-            string searchKey = queryDictionary["key"];
-            string searchValue = queryDictionary["value"];
+            string? searchKey = queryDictionary["key"];
+            string? searchValue = queryDictionary["value"];
 
+            // Redundant
             if (string.IsNullOrEmpty(searchKey) || string.IsNullOrEmpty(searchValue))
             {
                 HttpResponseData badRequest = req.CreateResponse(HttpStatusCode.BadRequest);
@@ -59,10 +76,10 @@ public class JsonSearch
                 return badRequest;
             }
 
-            // Get container client
+            // Access the specified blob container
             BlobContainerClient containerClient = _blobServiceClient.GetBlobContainerClient(team);
 
-            // Check if container exists
+            // Check if the container exists
             if (!await containerClient.ExistsAsync())
             {
                 HttpResponseData notFound = req.CreateResponse(HttpStatusCode.NotFound);
@@ -72,7 +89,7 @@ public class JsonSearch
 
             var matchingFiles = new List<object>();
 
-            // List all blobs in the container
+            // Enumerate through all blobs in the container
             await foreach (Azure.Storage.Blobs.Models.BlobItem blobItem in containerClient.GetBlobsAsync())
             {
                 if (!blobItem.Name.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
@@ -84,12 +101,12 @@ public class JsonSearch
 
                 try
                 {
-                    // Download and parse JSON content
+                    // Download and parse JSON content from the blob
                     Response<Azure.Storage.Blobs.Models.BlobDownloadResult> content = await blobClient.DownloadContentAsync();
                     string jsonContent = content.Value.Content.ToString();
                     using JsonDocument doc = JsonDocument.Parse(jsonContent);
 
-                    // Search for the key-value pair using recursive search
+                    // Search for specified key-value pair in JSON document
                     if (SearchJsonElement(doc.RootElement, searchKey, searchValue))
                     {
                         matchingFiles.Add(new {
@@ -105,7 +122,7 @@ public class JsonSearch
                 }
             }
 
-            // Create response
+            // Create and return response with matching files
             HttpResponseData response = req.CreateResponse(HttpStatusCode.OK);
             await response.WriteAsJsonAsync(new {
                 searchKey = searchKey,
@@ -126,8 +143,12 @@ public class JsonSearch
     }
 
     /// <summary>
-    /// Recursively searches through JSON elements for a specific key-value pair
+    /// Recursively searches through JSON elements for a specified key-value pair.
     /// </summary>
+    /// <param name="element">The JSON element to search within.</param>
+    /// <param name="searchKey">The key to search for.</param>
+    /// <param name="searchValue">The value associated with the key.</param>
+    /// <returns>True if the key-value pair is found; otherwise, false.</returns>
     private bool SearchJsonElement(JsonElement element, string searchKey, string searchValue)
     {
         switch (element.ValueKind)

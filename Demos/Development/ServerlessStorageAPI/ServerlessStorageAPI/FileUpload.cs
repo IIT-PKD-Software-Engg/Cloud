@@ -52,7 +52,7 @@ public class FileUpload
                 Environment.GetEnvironmentVariable(ConnectionStringValue),
                 team);
 
-            await containerClient.CreateIfNotExistsAsync();
+            // await containerClient.CreateIfNotExistsAsync();
 
             // Check if the request contains a valid "multipart/form-data" content type.
             if (!req.Headers.TryGetValues("Content-Type", out IEnumerable<string>? contentTypes) || !contentTypes.First().Contains("multipart/form-data"))
@@ -68,7 +68,7 @@ public class FileUpload
             string boundary = MultipartRequestHelper.GetBoundary(contentTypes.First());
             // Create a MultipartReader to read the multipart form data.
             var reader = new MultipartReader(boundary, req.Body);
-            MultipartSection section;
+            MultipartSection? section;
 
             // Read each section of the multipart form data.
             while ((section = await reader.ReadNextSectionAsync()) != null)
@@ -77,6 +77,7 @@ public class FileUpload
                 // Ensure the disposition type is "form-data".
                 // Ensure the section contains a file (has a file name).
                 if (ContentDispositionHeaderValue.TryParse(section.ContentDisposition, out ContentDispositionHeaderValue? contentDisposition) &&
+                    contentDisposition != null &&
                     contentDisposition.DispositionType.Equals("form-data") &&
                     contentDisposition.FileName != null)
                 {
@@ -109,7 +110,6 @@ public class FileUpload
                     return response;
                 }
             }
-
             logger.LogWarning("No valid file section found in request");
             // Create a Bad Request response indicating no valid file was provided.
             HttpResponseData noFileResponse = req.CreateResponse(HttpStatusCode.BadRequest);
@@ -143,7 +143,13 @@ public static class MultipartRequestHelper
         // Find the part of the header that contains the boundary.
         string? boundaryElement = elements.FirstOrDefault(entry => entry.StartsWith("boundary="));
         // Extract the boundary value, removing any surrounding quotes.
-        string? boundary = boundaryElement?.Substring("boundary=".Length).Trim('"');
-        return boundary;
+        if (!string.IsNullOrEmpty(boundaryElement))
+        {
+            return boundaryElement.Substring("boundary=".Length).Trim('"');
+        }
+        else
+        {
+            throw new ArgumentException("Content-Type header does not contain a valid boundary.");
+        }
     }
 }
