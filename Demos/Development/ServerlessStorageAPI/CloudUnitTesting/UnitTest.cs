@@ -36,6 +36,9 @@ using System.Threading.Tasks;
 
 namespace CloudUnitTesting;
 
+/// <summary>
+/// Unit Tests for Cloud Module
+/// </summary>
 public class Tests
 {
     public required HttpClient _httpClient;
@@ -45,6 +48,9 @@ public class Tests
     private const string BaseUrl = "https://secloudapp-2024.azurewebsites.net/api/";
 
     [SetUp]
+    /// <summary>
+    /// Setup of the HTTP Client to the Azure Function
+    /// </summary>
     public void Setup()
     {
         ServiceProvider serviceProvider = new ServiceCollection()
@@ -59,13 +65,19 @@ public class Tests
     }
 
     [TearDown]
+    /// <summary>
+    /// 
+    /// </summary>
     public void Teardown()
     {
         _httpClient?.Dispose();
     }
 
     [Test]
-    public async Task UploadAsync_ContentIsNull_ReturnsFailure()
+    /// <summary>
+    /// To test if we are uploading a Null Content File
+    /// </summary>
+    public async Task UploadAsyncNullContentReturnsFailure()
     {
         // Arrange
         var cloudService = new CloudService(BaseUrl, _team, _sasToken, _httpClient, _logger);
@@ -81,7 +93,10 @@ public class Tests
     }
 
     [Test]
-    public async Task UploadAsync_ContentLengthIsZero_ReturnsFailure()
+    /// <summary>
+    /// To test if we are uploading content with zero content length
+    /// </summary>
+    public async Task UploadAsyncZeroContentLengthReturnsFailure()
     {
         // Arrange
         var cloudService = new CloudService(BaseUrl, _team, _sasToken, _httpClient, _logger);
@@ -98,7 +113,10 @@ public class Tests
     }
 
     [Test]
-    public async Task UploadAsync_BlobNameWithoutExtension_ReturnsFailure()
+    /// <summary>
+    /// To test if we are uploading file with no extension
+    /// </summary>
+    public async Task UploadAsyncBlobNameWithoutExtensionReturnsFailure()
     {
         // Arrange
         var cloudService = new CloudService(BaseUrl, _team, _sasToken, _httpClient, _logger);
@@ -114,7 +132,10 @@ public class Tests
     }
 
     [Test]
-    public async Task UploadAsync_BlobNameWithUpperCaseExtension_ReturnsFailure()
+    /// <summary>
+    /// To test if we are uploading file with incorrect extension
+    /// </summary>
+    public async Task UploadAsyncBlobNameWithUpperCaseExtensionReturnsFailure()
     {
         // Arrange
         var cloudService = new CloudService(BaseUrl, _team, _sasToken, _httpClient, _logger);
@@ -125,13 +146,15 @@ public class Tests
         // Act
         ServiceResponse<string> response = await cloudService.UploadAsync(blobName, contentStream, contentType);
 
-        Assert.That(response.Success, Is.False);
         // Assert
-        //Assert.That(Path.GetExtension(blobName)?.TrimStart('.').ToLowerInvariant(), Is.EqualTo("txt"));
+        Assert.That(response.Success, Is.False);
     }
 
     [Test]
-    public async Task UploadAsync_BlobNameWithValidExtension_ReturnsSuccess()
+    /// <summary>
+    /// To test if we are uploading the content with correct extension
+    /// </summary>
+    public async Task UploadAsyncBlobNameWithValidExtensionReturnsSuccess()
     {
         // Arrange
         var cloudService = new CloudService(BaseUrl, _team, _sasToken, _httpClient, _logger);
@@ -144,10 +167,12 @@ public class Tests
 
         // Assert
         Assert.That(response.Success, Is.True); // Ensure additional logic is set up for upload testing
-        //Assert.That(Path.GetExtension(blobName)?.TrimStart('.').ToLowerInvariant(), Is.EqualTo("txt"));
     }
 
     [Test]
+    /// <summary>
+    /// To test if we are uploading file with unsupported content type
+    /// </summary>
     public async Task UploadFailsForUnsupportedContentType()
     {
         _logger.LogInformation("Testing upload with unsupported content type.");
@@ -167,23 +192,11 @@ public class Tests
         Assert.That(response.Success, Is.False);
         Assert.That(response.Message, Is.EqualTo("Unsupported content type: application/unknown"));
     }
-    /*
-    [Test]
-    public async Task ExceptionFileUploadTest()  // API testing
-    {
-        string dataUri = "data.txt";
-        string content = "Here I am.";
-        var request = new HttpRequestMessage(
-            HttpMethod.Post, BaseUrl + $"/{_team}/{dataUri}") {
-            Content = new StringContent(content)
-        };
-        HttpResponseMessage response = await _httpClient.SendAsync(request);
-        //response.EnsureSuccessStatusCode();
-
-        Assert.That(response.IsSuccessStatusCode, Is.EqualTo(false));
-    }*/
 
     [Test]
+    /// <summary>
+    /// To test if we are uploading file with incorrect content type
+    /// </summary>
     public async Task InvalidContentTypeFileUploadTest()
     {
         _logger.LogInformation("Uploading File with Invalid Content Type.");
@@ -203,6 +216,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test if we are uploading file with invalid file section
+    /// </summary>
     public async Task InvalidFileSectionFileUploadTest()
     {
         _logger.LogInformation("Uploading File with Invalid File Section.");
@@ -224,27 +240,12 @@ public class Tests
         Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.BadRequest));
         string responseContent = await response.Content.ReadAsStringAsync();
         Assert.That(responseContent, Is.EqualTo("Invalid content type. Expecting multipart/form-data."));
-
-        /*string boundary = "---MyBoundary---";
-        string requestBody = $"--{boundary}\r\n" +
-                          "Content-Disposition: form-data; name=\"file\"; filename=\"test.txt\"\r\n" +
-                          "Content-Type: text/plain\r\n" +
-                          "\r\n" +
-                          "This is a test file content\r\n" +
-                          $"--{boundary}--\r\n" +
-                          "invalid section\r\n";
-
-        using var content = new StringContent(requestBody, Encoding.UTF8);
-        content.Headers.Remove("Content-Type");
-        content.Headers.Add("Content-Type", $"multipart/form-data; boundary={boundary}");
-        // Send the request using HttpClient.PostAsync()
-        HttpResponseMessage response = await _httpClient.PostAsync($"{BaseUrl}/upload/{_team}", content);
-
-        // Assert that the upload was unsuccessful
-        Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.BadRequest));*/
     }
 
     [Test]
+    /// <summary>
+    /// To test for upload failure
+    /// </summary>
     public async Task UploadFailsWithErrorMessage()
     {
         _logger.LogInformation("Testing upload failure with error message.");
@@ -272,10 +273,12 @@ public class Tests
         _logger.LogInformation($"success is {response.Success.ToString()} and message is {response.Message.ToString()}");
 
         Assert.That(response.Success, Is.False);
-        //Assert.That(response.Message, Does.Contain("Upload failed: 400 - Bad Request"));
     }
 
     [Test]
+    /// <summary>
+    /// To test if we are uploading file while handling exception gracefully
+    /// </summary>
     public async Task UploadHandlesExceptionGracefully()
     {
         _logger.LogInformation("Testing upload when an exception is thrown.");
@@ -303,6 +306,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test if we are uploading large file
+    /// </summary>
     public async Task LargeFileUploadTest()
     {
         _logger.LogInformation("Uploading Large File.");
@@ -319,7 +325,6 @@ public class Tests
         new Random().NextBytes(buffer);
 
         string fileName = $"test-{Guid.NewGuid()}.bin";
-        //string filePath = "path/to/your/file.dat";
         using var stream = new MemoryStream(buffer);
         ServiceResponse<string> response = await cloudService.UploadAsync(fileName, stream, "application/octet-stream");
 
@@ -327,6 +332,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test if we are uploading image file
+    /// </summary>
     public async Task ImageFileUploadTest()
     {
         _logger.LogInformation("Uploading Image File.");
@@ -343,12 +351,16 @@ public class Tests
         using var httpClient = new HttpClient();
         byte[] imageBytes = await httpClient.GetByteArrayAsync(imageUrl);
         using var stream = new MemoryStream(imageBytes);
+
         // Upload the downloaded image
         ServiceResponse<string> response = await cloudService.UploadAsync("image.jpg", stream, "image/jpg");
         Assert.That(response.Success, Is.EqualTo(true));
     }
 
     [Test]
+    /// <summary>
+    /// To test if we are uploading empty file
+    /// </summary>
     public async Task EmptyFileUploadTest()
     {
         _logger.LogInformation("Uploading Empty File.");
@@ -360,16 +372,18 @@ public class Tests
             _logger
         );
 
-        // string content = null;
         string fileName = $"test-{Guid.NewGuid()}.txt";
         File.CreateText(fileName).Close();
-        //string content = File.ReadAllText(fileName);
         using var stream = new MemoryStream();
         ServiceResponse<string> response = await cloudService.UploadAsync(fileName, stream, "text/plain");
+        
         Assert.That(response.Success, Is.EqualTo(false));
     }
 
     [Test]
+    /// <summary>
+    /// To test if we are uploading file with empty name
+    /// </summary>
     public async Task EmptyFileNameUploadTest()
     {
         _logger.LogInformation("Uploading File with no file name.");
@@ -390,6 +404,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for proper file
+    /// </summary>
     public async Task SuccessfulFileUploadTest()
     {
         _logger.LogInformation("Uploading Regular File.");
@@ -410,6 +427,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test if we can upload files concurrently
+    /// </summary>
     public async Task ConcurrentFileUploadTest()
     {
         _logger.LogInformation("Uploading files concurrently.");
@@ -442,6 +462,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test if we are downloading file with invalid name
+    /// </summary>
     public async Task InvalidFileNameDownloadTest()
     {
         _logger.LogInformation("Downloading File with invalid file name.");
@@ -455,27 +478,14 @@ public class Tests
 
         string blobName = $"{Guid.NewGuid()}";
         ServiceResponse<System.IO.Stream> downloadResponse = await cloudService.DownloadAsync(blobName);
+        
         Assert.That(downloadResponse.Success, Is.EqualTo(false));
     }
 
-    /*
     [Test]
-    public async Task ExceptionFileDownloadTest()
-    {
-        _logger.LogInformation("Testing for Internal Server Error in File Download.");
-        var cloudService = new CloudService(
-            BaseUrl,
-            _team,
-            _sasToken,
-            _httpClient,
-            _logger
-        );
-
-        string blobName = $"{Guid.NewGuid()}.txt";
-        ServiceResponse<System.IO.Stream> downloadResponse = await cloudService.DownloadAsync(blobName);
-    }*/
-
-    [Test]
+    /// <summary>
+    /// To test if we are downloading non existent file
+    /// </summary>
     public async Task NonExistentFileDownloadTest()
     {
         _logger.LogInformation("Downloading Non-existent File.");
@@ -493,6 +503,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test if we can download proper file
+    /// </summary>
     public async Task SuccessfulFileDownloadTest()
     {
         _logger.LogInformation("Downloading Regular File.");
@@ -514,6 +527,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test if we can successfully retrieve configuration setting
+    /// </summary>
     public async Task SuccessfulConfigFileRetrievalTest()
     {
         _logger.LogInformation("Getting Correct Config Setting.");
@@ -531,6 +547,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for incorrect setting
+    /// </summary>
     public async Task NonExistentConfigFileRetrievalTest()
     {
         _logger.LogInformation("Testing Config Retrieval with non existent config file.");
@@ -548,6 +567,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for incorrect setting in an invalid file
+    /// </summary>
     public async Task NonExistentSettingConfigFileRetrievalTest()
     {
         _logger.LogInformation("Testing Config Retrieval with non existent config setting.");
@@ -564,24 +586,10 @@ public class Tests
         Assert.That(response.Success, Is.EqualTo(false));
     }
 
-    /*[Test]
-    public async Task ExceptionConfigFileRetrievalTest()
-    {
-        _logger.LogInformation("Testing for Internal Server Error in Config File Retrieval.");
-        var cloudService = new CloudService(
-            BaseUrl,
-            _team,
-            _sasToken,
-            _httpClient,
-            _logger
-        );
-
-        string setting = "Theme";
-        ServiceResponse<string> response = await cloudService.RetrieveConfigAsync(setting);
-        Assert.That(response.Success, Is.EqualTo(false));
-    }*/
-
     [Test]
+    /// <summary>
+    /// To test for successful file update
+    /// </summary>
     public async Task SuccessfulFileUpdateTest()
     {
         _logger.LogInformation("Updating Regular File.");
@@ -604,6 +612,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for file update in an invalid container
+    /// </summary>
     public async Task InvalidContainerNameUpdateTest()
     {
         _logger.LogInformation("Updating Regular File.");
@@ -626,6 +637,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for successful file delete
+    /// </summary>
     public async Task SuccessfulFileDeleteTest()
     {
         _logger.LogInformation("Deleting Regular File.");
@@ -650,6 +664,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for file delete with invalid name
+    /// </summary>
     public async Task InvalidFileNameDeleteTest()
     {
         _logger.LogInformation("Deleting Regular File.");
@@ -667,6 +684,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for successful listing blobs in a container
+    /// </summary>
     public async Task ListBlobsTest()
     {
         _logger.LogInformation("Listing Blobs in the container.");
@@ -683,6 +703,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for listing blobs in an invalid container
+    /// </summary>
     public async Task InvalidContainerListBlobsTest()
     {
         _logger.LogInformation("Listing Blobs in the container.");
@@ -699,7 +722,10 @@ public class Tests
     }
 
     [Test]
-    public async Task ListBlobsAsync_BlobListResponseIsNull_ReturnsEmptyList()
+    /// <summary>
+    /// To test for null response in blob listing
+    /// </summary>
+    public async Task ListBlobsAsyncBlobListResponseIsNullReturnsEmptyList()
     {
         // Arrange: Mock HttpClient to return a successful response with null content
         var httpClientMock = new HttpClient(new HttpMessageHandlerMock((request, cancellationToken) => {
@@ -717,13 +743,12 @@ public class Tests
         // Assert
         Assert.That(response.Success, Is.True);
         Assert.That(response.Data, Is.Null); // Null because blobListResponse.Blobs was null
-        /*Mock.Get(_logger).Verify(
-            x => x.LogInformation("Successfully listed blobs. Found {Count} blobs", 0),
-            Times.Once
-        );*/
     }
 
     [Test]
+    /// <summary>
+    /// To test for listing blobs in an empty container
+    /// </summary>
     public async Task EmptyContainerListBlobsTest()
     {
         _logger.LogInformation("Listing Blobs in the container.");
@@ -740,6 +765,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for successful JSON search
+    /// </summary>
     public async Task SuccessfulJsonSearchTest()
     {
         _logger.LogInformation("Search for JSON files in the container");
@@ -778,6 +806,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for JSON search with empty search key
+    /// </summary>
     public async Task EmptySearchKeyJsonSearchTest()
     {
         _logger.LogInformation("Search for JSON files in the container");
@@ -789,23 +820,6 @@ public class Tests
             _logger
         );
 
-        /*WeatherForecast weather = new WeatherForecast {
-            Date = DateTime.Now,
-            TemperatureCelsius = 32,
-            Summary = "Sunny"
-        };
-        string fileName = "WeatherForecast.json";
-        await using (FileStream createStream = File.Create(fileName))
-        {
-            await JsonSerializer.SerializeAsync(createStream, weather);
-        */
-
-        // Open the file for reading to prepare for upload
-        //await using FileStream uploadStream = File.OpenRead(fileName);
-
-        // Upload the file to the cloud with "application/json" as the content type
-        //ServiceResponse<string> upload_response = await cloudService.UploadAsync("weather.json", uploadStream, "application/json");
-
         // Now, search the uploaded JSON file in the cloud
         string key = "";
         string value = "32";
@@ -816,6 +830,9 @@ public class Tests
     }
 
     [Test]
+    /// <summary>
+    /// To test for JSON search in an invalid container name
+    /// </summary>
     public async Task InvalidContainerNameJsonSearchTest()
     {
         _logger.LogInformation("Search for JSON files in the container");
@@ -852,7 +869,10 @@ public class Tests
     }
 
     [Test]
-    public async Task SearchJsonFilesAsync_FailsWithErrorMessage()
+    /// <summary>
+    /// To test for unsuccessful JSON search
+    /// </summary>
+    public async Task SearchJsonFilesAsyncFailsWithErrorMessage()
     {
         _logger.LogInformation("Testing JSON search failure scenario.");
 
@@ -881,17 +901,13 @@ public class Tests
         // Assert: Verify the response
         Assert.That(response.Success, Is.False);
         Assert.That(response.Message, Does.Contain("Search failed: Bad Request"));
-
-        // Assert: Verify the log entry (using a logger mock)
-        /*var loggerMock = Mock.Get(_logger); // Assuming a mock logger is used
-        loggerMock.Verify(
-            x => x.LogError("JSON search failed. Status: {StatusCode}, Reason: {Reason}", HttpStatusCode.BadRequest, "Bad Request"),
-            Times.Once
-        );*/
     }
 
     [Test]
-    public async Task SearchJsonFilesAsync_SearchResponseIsNull_ReturnsSuccessWithZeroMatches()
+    /// <summary>
+    /// To test for valid response with null content
+    /// </summary>
+    public async Task SearchJsonFilesAsyncSearchResponseIsNullReturnsSuccessWithZeroMatches()
     {
         // Arrange: Mock HttpClient to return a valid response with null content
         var httpClientMock = new HttpClient(new HttpMessageHandlerMock((request, cancellationToken) => {
@@ -909,14 +925,13 @@ public class Tests
         // Assert
         Assert.That(response.Success, Is.True);
         Assert.That(response.Data, Is.Null);
-        /*Mock.Get(_logger).Verify(
-            x => x.LogInformation("Successfully completed JSON search. Found {MatchCount} matches", 0),
-            Times.Once
-        );*/
     }
 
 }
 
+/// <summary>
+/// Mock HTTP Message Handler
+/// </summary>
 public class HttpMessageHandlerMock : HttpMessageHandler
 {
     private readonly Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> _handler;
@@ -932,6 +947,9 @@ public class HttpMessageHandlerMock : HttpMessageHandler
     }
 }
 
+/// <summary>
+/// Mock Class for JSON Search
+/// </summary>
 public class WeatherForecast
 {
     public DateTimeOffset Date { get; set; }
