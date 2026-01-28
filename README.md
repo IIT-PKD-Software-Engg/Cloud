@@ -68,7 +68,7 @@ Complete reference for all cloud operations including uplaod, download, update, 
 - **Configuration Guide** (`docs/configuration.md`)
 Explains required configuration pararmeters such as base URL, container name, SAS token usage, and best practices for secure access.
 
--- **Architecture Overvie** (`docs/architecture.md`)
+- **Architecture Overview** (`docs/architecture.md`)
 Describes the layered design of the cloud module, service abstraction, interfaces, and third-party cloud provider integration.
 
 ## Error Handling & Logging
