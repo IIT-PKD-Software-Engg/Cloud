@@ -1,4 +1,5 @@
 1. Update the architecture and configuration files.
 2. Add like 3 use case examples in the `examples` folder.
 3. Finish the half-baked README.
-4. Update the cloud-architecture.png a little. 
+4. Update the cloud-architecture.png a little.
+5. Also few code typos in api-reference.
