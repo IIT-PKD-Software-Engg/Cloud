@@ -93,7 +93,7 @@ The cloud service was designed to support multiple independent client modules th
 The complete system integrates multiple independent components such as dashboard, content management, whiteboard, and update services, all of which consume this cloud module through a shared interface.
 
 For an overview of the full system, see:
-- https://github.com/PranavRao25/SoftwareEngineering2024
+- https://github.com/GroupProjectSE2024/SoftwareEngineering2024
 
 
 ## License
