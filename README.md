@@ -6,7 +6,6 @@ This module exposes a clean abstraction over common storage operations and is in
 
 This repository is part of the Software Lab Project, designed to support and manage cloud-based applications and services.
 
----
 
 ## Overview
 
@@ -14,7 +13,6 @@ The Cloud Service Library acts as a centralized backend service for managing clo
 
 It is designed with modularity and extensibility in mind, enabling different system components to interact with cloud storage without direct dependency on the underlying cloud provider.
 
----
 
 ## Features
 
@@ -26,7 +24,6 @@ It is designed with modularity and extensibility in mind, enabling different sys
 - Integrated logging using `Microsoft.Extensions.Logging`
 - Designed for use in a multi-module distributed system
 
----
 
 ##  Architecture Overview
 
@@ -45,7 +42,6 @@ It is designed with modularity and extensibility in mind, enabling different sys
 - An Azure Storage account
 - Valid SAS token for the target container
 
----
 
 ### Basic Usage
 
@@ -87,7 +83,6 @@ The library integrates with Microsoft.Extensions.Logging to provide:
 - Error logs for failures
 - Debug logs for detailed execution trailing
 
----
 
 ## Project Context
 
@@ -95,7 +90,6 @@ This module was developed as part of final-year Software Engineering project foc
 
 The cloud service was designed to support multiple independent client modules through a common reusable interface.
 
----
 
 ## License
 
