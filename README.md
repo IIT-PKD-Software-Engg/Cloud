@@ -86,9 +86,14 @@ The library integrates with Microsoft.Extensions.Logging to provide:
 
 ## Project Context
 
-This module was developed as part of final-year Software Engineering project focused on building a distributed, modular system with clearly defined service boundaries.
+This module was developed as part of a larger final-year Software Engineering project focused on building a distributed, modular system with clearly defined service boundaries.
 
 The cloud service was designed to support multiple independent client modules through a common reusable interface.
+
+The complete system integrates multiple independent components such as dashboard, content management, whiteboard, and update services, all of which consume this cloud module through a shared interface.
+
+For an overview of the full system, see:
+- https://github.com/PranavRao25/SoftwareEngineering2024
 
 
 ## License
