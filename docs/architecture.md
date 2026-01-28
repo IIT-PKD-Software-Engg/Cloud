@@ -1,0 +1,1 @@
+need to just provide few lines about the architecture of the cloud service
